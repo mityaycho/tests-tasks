@@ -19,10 +19,7 @@ export const Clock = () => {
 
 	const [actualClock, setActualClock] = useState(true);
 
-	const changeClock = (bool: boolean) => {
-		actualClock ? setActualClock(bool) : setActualClock(bool);
-		console.log(actualClock)
-	};
+	const changeClock = (bool: boolean) => actualClock ? setActualClock(bool) : setActualClock(bool);
 
 
 	return (
@@ -40,7 +37,7 @@ export const Clock = () => {
 					></div>
 				</div>
 				:
-				`${hour / 30}:${minute / 6}:${second / 6}`
+				`${(hour / 30) < 10 ? '0' + (hour / 30): (hour / 30)}:${(minute / 6) < 10 ? '0' + (minute / 6): (minute / 6)}:${(second / 6) < 10 ? '0' + (second / 6): (second / 6)}`
 		}
 			<button onClick={() => changeClock(true)}>analog clock</button>
 			<button onClick={() => changeClock(false)}>digital clock</button>
